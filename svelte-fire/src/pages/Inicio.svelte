@@ -1,8 +1,14 @@
 <script>
     
     import { push } from 'svelte-spa-router';
-    import { addUser, getUsers, modifyUser, deleteUser } from './firebase.js';
+    import { addUser, getUsers, modifyUser, deleteUser } from '../firebase/firebaseUsers';
+    import { getUser } from '../firebase/firebaseAuth';
     
+
+      if(!getUser()){
+        push('/login');
+      }
+
       let nombre;
       let email;
       let users = [];
@@ -51,7 +57,7 @@
       const idDetalle = (id) => {
         let route = `/DetalleUsuario/${id}`;
         console.log('RUTA RUTA ',route);
-        push(`/DetalleUsuario/${id}`);
+        push(`/detalleUsuario/${id}`);
       }
 
       
@@ -62,7 +68,7 @@
     
     
     
-    <div class="container">
+    
       <h1>Crud Firestore</h1>
     
       <input type="text" placeholder="Nombre" class="input" bind:value={nombre}/>
@@ -108,4 +114,4 @@
         </tbody>
       </table>
     
-    </div>
+    

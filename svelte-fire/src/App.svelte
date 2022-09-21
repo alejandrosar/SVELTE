@@ -1,10 +1,11 @@
 <script>
   import Router from 'svelte-spa-router';
-  import routes from './router.js';
-  
+  import routes from './scripts/router.js';
+  import NavBar from './pages/NavBar.svelte'
 </script>
-<nav class="blue"></nav>
- 
 
+ <NavBar/>
 
+<div class="container">
 <Router {routes}/>
+</div>

@@ -1,6 +1,6 @@
 <script>
     import { pop } from 'svelte-spa-router';
-    import {getUserDetails} from './firebase.js';
+    import {getUserDetails} from '../firebase/firebaseUsers';
     export let params;
     let {id} = params;
     let user = {};
@@ -19,7 +19,7 @@
 
 </script>
 
-<div class="container">
+
 <h1>Detalle usuario</h1>
 
 <button class="btn green" on:click={pop}>VOLVER</button>
@@ -46,6 +46,6 @@
 {/await}
     
 
-</div>
+
 
 
