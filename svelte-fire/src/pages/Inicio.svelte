@@ -2,12 +2,10 @@
     
     import { push } from 'svelte-spa-router';
     import { addUser, getUsers, modifyUser, deleteUser } from '../firebase/firebaseUsers';
-    import { getUser } from '../firebase/firebaseAuth';
+    
     
 
-      if(!getUser()){
-        push('/login');
-      }
+      
 
       let nombre;
       let email;

@@ -1,32 +1,25 @@
 <script>
 import { createUserEmailPwd, loginUserEmailPwd } from '../firebase/firebaseAuth';
-import { push } from 'svelte-spa-router';   
+import { push } from 'svelte-spa-router';  
+import { auth } from '../firebase/firebaseConfig.js'; 
+
 
 let email;
 let password;
 
+//ESTA MIERDA SUPONGO QUE SE TRASPASARA A LOS ESTADOS DE SVELTE Y SE MANTENDRA EL CONTROL DE LOGIN DESDE AHI
+auth.onAuthStateChanged(function(user){            
+        if(user){
+            push('/inicio');
+        }});
+    
 
 const login = async () => {
-    console.log('login');
-    console.log('datitos', {email, password});
-    var result = await loginUserEmailPwd(email, password);
-    if(result.status == 0){
-        push('/inicio');
-    }else{
-        console.log('login error');
-    }
-
+    await loginUserEmailPwd(email, password);
 }
 
 const registro = async () => {
-    console.log('registro');
-    console.log('datitos', {email, password});
-    var result = await createUserEmailPwd(email, password);
-    if(result.status == 0){
-        push('/inicio');
-    }else{
-        console.log('registro error');
-    }    
+    await createUserEmailPwd(email, password);      
 }
 
 
